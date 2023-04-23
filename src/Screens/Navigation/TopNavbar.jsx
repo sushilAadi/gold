@@ -46,10 +46,17 @@ function classNames(...classes) {
 }
 const TopNavbar = (props) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const loginStore = localStorage.getItem('login')
+
   const login = () => {
     localStorage.setItem("login", true);
     window.location.href = "/";
   };
+
+  const logout = () => {
+    localStorage.removeItem('login');
+    window.location.href = '/';
+  }
   const register = () => {
     window.location.href = "/register";
   };
@@ -155,12 +162,13 @@ const TopNavbar = (props) => {
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <div className="btn-group">
-            <button className="btn btn-warning rounded-0" onClick={login}>
-              Login
+            <button className="btn btn-warning rounded-0" onClick={!loginStore?login:logout}>
+            {!loginStore?"Login":"logout"}
             </button>
+            {!loginStore && 
             <button className="btn btn-danger rounded-0" onClick={register}>
               Register
-            </button>
+            </button>}
           </div>
         </div>
       </nav>
@@ -246,9 +254,9 @@ const TopNavbar = (props) => {
               <div className="py-6">
                 <button
                   className="btn btn-warning rounded-0 w-100"
-                  onClick={login}
+                  onClick={!loginStore?login:logout}
                 >
-                  Login
+                  {!loginStore?"Login":"logout"}
                 </button>
               </div>
             </div>
