@@ -1,0 +1,25 @@
+
+  
+  .scroll-snap {
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start;
+  }
+  
+  .scroll-snap-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+  }
+  
+  .section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    scroll-snap-points-y: repeat(100%);
+  }
+  
+  

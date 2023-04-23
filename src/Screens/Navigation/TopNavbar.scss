@@ -1,0 +1,31 @@
+/* This rule will animate the dialog panel's opacity when it changes */
+.dialog-panel {
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+  /* This rule will animate the dialog's transform property when it changes */
+  .dialog-enter {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  
+  /* This rule will animate the dialog's transform property when it changes */
+  .dialog-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  }
+  
+  /* This rule will animate the dialog's transform property when it changes */
+  .dialog-exit {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  /* This rule will animate the dialog's transform property when it changes */
+  .dialog-exit-active {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  }
+  

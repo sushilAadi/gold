@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from "react";
+import Lottie from "react-lottie";
+import "./App.css";
+import loader from "./assets/loading.json";
+import TopNavbar from "./Screens/Navigation/TopNavbar";
+
+const RoutePage = React.lazy(() => import("./Routes/RoutePage"));
 
 function App() {
+  const login = localStorage.getItem("login");
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: loader,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={login && "d-flex"}>
+      <Suspense
+        fallback={
+          <div className="h-screen flex items-center justify-center">
+            <Lottie options={defaultOptions} height={300} width={500} />
+          </div>
+        }
+      >
+        <RoutePage />
+      </Suspense>
     </div>
   );
 }
